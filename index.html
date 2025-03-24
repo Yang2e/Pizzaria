@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria do Timão</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #000; color: #fff; text-align: center; margin: 0; padding: 0; }
+        header {
+            background-color: #cc0000;
+            padding: 30px 0;
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 40px 0;
+        }
+        .pizza {
+            margin: 15px;
+            padding: 20px;
+            border: 1px solid #cc0000;
+            background-color: #111;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pizza:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        .pizza img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .pizza-details {
+            padding: 15px;
+            text-align: left;
+        }
+        .pizza-details h3 {
+            margin: 0;
+            color: #cc0000;
+            font-size: 24px;
+        }
+        .pizza-details p {
+            font-size: 14px;
+            color: #ccc;
+        }
+        button {
+            background-color: #cc0000;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff0000;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        footer {
+            background-color: #111;
+            color: #fff;
+            padding: 20px 0;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>Pizzaria do Timão - O sabor da Fiel 🍕⚽</header>
+    <div class="container">
+        <h2>Escolha sua Pizza</h2>
+        <div class="menu-grid">
+            <div class="pizza">
+                <img src="https://via.placeholder.com/300x200/cc0000/fff?text=Marmita+do+Rival" alt="Marmita do Rival">
+                <div class="pizza-details">
+                    <h3>Marmita do Rival</h3>
+                    <p>R$ 30,00</p>
+                    <p><em>Ingredientes:</em> Queijo, calabresa, cebola, orégano</p>
+                    <button>Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="https://via.placeholder.com/300x200/cc0000/fff?text=Chora+Porco" alt="Chora Porco">
+                <div class="pizza-details">
+                    <h3>Chora Porco</h3>
+                    <p>R$ 35,00</p>
+                    <p><em>Ingredientes:</em> Queijo, bacon, tomate seco, rúcula</p>
+                    <button>Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="https://via.placeholder.com/300x200/cc0000/fff?text=Coração+Corinthiano" alt="Coração Corinthiano">
+                <div class="pizza-details">
+                    <h3>Coração Corinthiano</h3>
+                    <p>R$ 40,00</p>
+                    <p><em>Ingredientes:</em> Queijo, coração de frango, alho frito, requeijão</p>
+                    <button>Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="https://via.placeholder.com/300x200/cc0000/fff?text=Peixada+do+Santos" alt="Peixada do Santos">
+                <div class="pizza-details">
+                    <h3>Peixada do Santos</h3>
+                    <p>R$ 33,00</p>
+                    <p><em>Ingredientes:</em> Queijo, atum, cebola, azeitonas pretas</p>
+                    <button>Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="Arco-iris.jpg" alt="Arco-Íris Tricolor">
+                <div class="pizza-details">
+                    <h3>Arco-Íris Tricolor</h3>
+                    <p>R$ 32,00</p>
+                    <p><em>Ingredientes:</em> Queijo, pimentões coloridos, presunto, catupiry</p>
+                    <button>Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="https://via.placeholder.com/300x200/cc0000/fff?text=Gol+do+Cássio" alt="Gol do Cássio">
+                <div class="pizza-details">
+                    <h3>Gol do Cássio</h3>
+                    <p>R$ 45,00</p>
+                    <p><em>Ingredientes:</em> Queijo, frango desfiado, bacon, cheddar</p>
+                    <button>Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Pizzaria do Timão. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
