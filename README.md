@@ -1,4 +1,4 @@
-# Pizzaria Tech 🍕
+# Pizzaria do timão🍕
 
 Bem-vindo ao **Pizzaria Tech**, um projeto inovador que integra **tecnologia** e **automação** para transformar a experiência de compra de pizzas. Desenvolvido com o objetivo de oferecer aos clientes uma plataforma inteligente para pedidos personalizados e otimização no processo de entrega, nosso sistema utiliza **IA** para recomendações e controles automáticos.
 
