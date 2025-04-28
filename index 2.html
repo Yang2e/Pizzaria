@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria do Timão</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #000; color: #fff; text-align: center; margin: 0; padding: 0; }
+        header {
+            background-color: #cc0000;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+        }
+        header span {
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .container { width: 90%; margin: auto; padding: 40px 0; }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .pizza {
+            margin: 15px;
+            padding: 20px;
+            border: 1px solid #cc0000;
+            background-color: #111;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pizza:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255, 0, 0, 0.6); }
+        .pizza img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+        .pizza-details { padding: 15px; text-align: left; }
+        .pizza-details h3 { margin: 0; color: #cc0000; font-size: 24px; }
+        .pizza-details p { font-size: 14px; color: #ccc; }
+        button {
+            background-color: #cc0000;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        button:hover { background-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); }
+        #cart {
+            background: #111;
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            overflow-y: auto;
+            transition: right 0.4s ease-in-out;
+            box-shadow: -4px 0 6px rgba(255, 0, 0, 0.3);
+        }
+        #cart.show { right: 0; }
+        #cart h2 { color: #cc0000; }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background: #222;
+            border-radius: 5px;
+        }
+        .cart-item button {
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        footer { background-color: #111; color: #fff; padding: 20px 0; font-size: 16px; text-align: center; margin-top: 40px; }
+        footer a { color: #ff4444; text-decoration: none; font-weight: bold; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        Pizzaria do Timão - O sabor da Fiel 🍕️⚽
+        <span onclick="toggleCart()">🛒</span>
+    </header>
+
+    <div class="container">
+        <h2>Escolha sua Pizza</h2>
+        <div class="menu-grid">
+            <!-- Sabores Tematizados do Corinthians, Futebol e Zoação aos Rivais -->
+            <div class="pizza">
+                <img src="campea.jpg" alt="Corinthians Campeão">
+                <div class="pizza-details">
+                    <h3>Corinthians Campeão</h3>
+                    <p>R$ 45,00</p>
+                    <p><em>Ingredientes:</em> Queijo, carne seca, cebola roxa, azeite de oliva</p>
+                    <button onclick="addToCart('Corinthians Campeão', 45)">Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="fiel.jpg" alt="Fiel Torcida">
+                <div class="pizza-details">
+                    <h3>Fiel Torcida</h3>
+                    <p>R$ 40,00</p>
+                    <p><em>Ingredientes:</em> Queijo, calabresa, azeitonas, orégano</p>
+                    <button onclick="addToCart('Fiel Torcida', 40)">Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="veia.jpg" alt="Timão Na Veia">
+                <div class="pizza-details">
+                    <h3>Timão Na Veia</h3>
+                    <p>R$ 48,00</p>
+                    <p><em>Ingredientes:</em> Carne de sol, tomate seco, rúcula e parmesão</p>
+                    <button onclick="addToCart('Timão Na Veia', 48)">Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="gol.jpg" alt="Gol do Corinthians">
+                <div class="pizza-details">
+                    <h3>Gol do Corinthians</h3>
+                    <p>R$ 38,00</p>
+                    <p><em>Ingredientes:</em> Frango desfiado, milho, catupiry</p>
+                    <button onclick="addToCart('Gol do Corinthians', 38)">Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="fazendo.jpg" alt="Fazendo História">
+                <div class="pizza-details">
+                    <h3>Fazendo História</h3>
+                    <p>R$ 50,00</p>
+                    <p><em>Ingredientes:</em> Mussarela, gorgonzola, brócolis, tomate</p>
+                    <button onclick="addToCart('Fazendo História', 50)">Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="timao.jpg" alt="Pizzaria do Timão">
+                <div class="pizza-details">
+                    <h3>Pizzaria do Timão</h3>
+                    <p>R$ 42,00</p>
+                    <p><em>Ingredientes:</em> Mussarela, pepperoni, azeitona preta, orégano</p>
+                    <button onclick="addToCart('Pizzaria do Timão', 42)">Adicionar</button>
+                </div>
+            </div>
+
+            <!-- Zoação com o Rival Palmeiras -->
+            <div class="pizza">
+                <img src="titulo.jpg" alt="Palmeiras Sem Título">
+                <div class="pizza-details">
+                    <h3>Palmeiras Sem Título</h3>
+                    <p>R$ 35,00</p>
+                    <p><em>Ingredientes:</em> Queijo sem graça, tomate e frango sem tempero.</p>
+                    <button onclick="addToCart('Palmeiras Sem Título', 35)">Adicionar</button>
+                </div>
+            </div>
+            <div class="pizza">
+                <img src="chora.jpg" alt="Choro Palmeirense">
+                <div class="pizza-details">
+                    <h3>Choro Palmeirense</h3>
+                    <p>R$ 32,00</p>
+                    <p><em>Ingredientes:</em> Um pedaço de queijo e muita cebola.</p>
+                    <button onclick="addToCart('Choro Palmeirense', 32)">Adicionar</button>
+                </div>
+            </div>
+            <!-- Marmita do Rival -->
+            <div class="pizza">
+                <img src="mar.jpg" alt="Marmita do Rival">
+                <div class="pizza-details">
+                    <h3>Marmita do Rival</h3>
+                    <p>R$ 29,00</p>
+                    <p><em>Ingredientes:</em> Arroz, feijão e carne seca (meio sem tempero, né?).</p>
+                    <button onclick="addToCart('Marmita do Rival', 29)">Adicionar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  
+      
+ 
+<div class="container">
+    <h2>Escolha sua Bebida</h2>
+    <div class="menu-grid">
+      <div class="pizza">
+        <img src="coca.png" alt="Coca-Cola">
+        <div class="pizza-details">
+          <h3>Coca-Cola 2L</h3>
+          <p>R$ 10,00</p>
+          <p><em>Refrigerante gelado para acompanhar</em></p>
+          <button onclick="addToCart('Coca-Cola 2L', 10)">Adicionar</button>
+        </div>
+      </div>
+      <div class="pizza">
+        <img src="guarana.png" alt="Guaraná">
+        <div class="pizza-details">
+          <h3>Guaraná Antártica 2L</h3>
+          <p>R$ 9,00</p>
+          <p><em>O sabor brasileiro da Fiel</em></p>
+          <button onclick="addToCart('Guaraná Antártica 2L', 9)">Adicionar</button>
+        </div>
+      </div>
+    </div>
+   
+    <h2>Sobremesas</h2>
+    <div class="menu-grid">
+      <div class="pizza">
+        <img src="choco.jpg" alt="Pizza de Chocolate">
+        <div class="pizza-details">
+          <h3>Pizza de Chocolate</h3>
+          <p>R$ 25,00</p>
+          <p><em>Chocolate ao leite, morangos e granulado</em></p>
+          <button onclick="addToCart('Pizza de Chocolate', 25)">Adicionar</button>
+        </div>
+      </div>
+      <div class="pizza">
+        <img src="pudim.jpg" alt="Pudim da Casa">
+        <div class="pizza-details">
+          <h3>Pudim da Casa</h3>
+          <p>R$ 12,00</p>
+          <p><em>Leite condensado, caramelo e amor</em></p>
+          <button onclick="addToCart('Pudim da Casa', 12)">Adicionar</button>
+        </div>
+      </div>
+    </div>
+   
+    <h2>Combos Timão</h2>
+    <div class="menu-grid">
+      <div class="pizza">
+        <img src="combo1.jpg" alt="Combo Família Fiel">
+        <div class="pizza-details">
+          <h3>Combo Família Fiel</h3>
+          <p>R$ 95,00</p>
+          <p><em>2 Pizzas Grandes + 1 Refrigerante 2L</em></p>
+          <button onclick="addToCart('Combo Família Fiel', 95)">Adicionar</button>
+        </div>
+      </div>
+      <div class="pizza">
+        <img src="familia.jpg" alt="Combo Casal Corintiano">
+        <div class="pizza-details">
+          <h3>Combo Casal Corintiano</h3>
+          <p>R$ 65,00</p>
+          <p><em>1 Pizza Média + 1 Refrigerante + 1 Sobremesa</em></p>
+          <button onclick="addToCart('Combo Casal Corintiano', 65)">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+    <div id="cart">
+        <h2>Carrinho</h2>
+        <div id="cart-items"></div>
+        <h3>Total: R$ <span id="total">0.00</span></h3>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Pizzaria do Timão. Todos os direitos reservados.</p>
+        <a href="https://instagram.com/guil_urata22" target="_blank" style="color: #fff; background-color: #cc0000; padding: 10px 20px; border-radius: 8px; display: inline-block; margin-top: 10px;">
+            📸 Nos siga no Instagram
+        </a>
+        
+    </footer>
+
+    <script>
+        let cart = [];
+        
+        function toggleCart() {
+            document.getElementById("cart").classList.toggle("show");
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = "";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name} - R$ ${item.price.toFixed(2)}</span>
+                        <button onclick="removeFromCart(${index})">❌</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById("total").innerText = total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+        
+    </script>
+</body>
+</html>
